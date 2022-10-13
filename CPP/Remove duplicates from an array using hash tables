@@ -1,0 +1,64 @@
+#include <bits/stdc++.h>
+using namespace std;
+
+void remove_duplicates(int *sum, int &s)
+{
+    int hash[100000] = {0};
+    int k = 0;
+
+    for (int i = 0; i < s; ++i)
+    {
+
+        if (hash[sum[i]] == 0)
+        {
+            hash[sum[i]] = 1;
+            sum[k++] = sum[i];
+        }
+    }
+
+    s = k;
+}
+
+int main()
+{
+    int m, n;
+    cout << "Enter size of first array: ";
+    cin >> n;
+    cout << "\nEnter size of first array: ";
+    cin >> m;
+    cout<<"\nEnter elements:\n";
+    int a[n], b[m];
+    for (int i = 0; i < n; i++)
+    {
+        cin >> a[i];
+    }
+    for (int i = 0; i < m; i++)
+    {
+        cin >> b[i];
+    }
+    int s = m + n;
+    int sum[s];
+    for (int j = 0; j < n; j++)
+    {
+        sum[j] = a[j];
+    }
+    int c = 0;
+    for (int j = n; j < s; j++)
+    {
+        sum[j] = b[c];
+        c++;
+    }
+
+    remove_duplicates(sum, s);
+    
+    int count=0;
+    cout << "Output Array: ";
+    for (int i = 0; i < s; ++i)
+    {
+        cout << sum[i] << ' ';
+        count++;
+    }
+    cout << endl;
+    cout<<"The size of the new array is: ";
+    cout<<count;
+}
