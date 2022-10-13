@@ -1,0 +1,27 @@
+#include<bits/stdc++.h>
+using namespace std;
+
+int main()
+{
+    string s;
+    cin>>s;
+    int c[26];
+    for(int i=0; i<26; i++)
+    {
+        c[i]=0;
+    }
+    for(int i=0; i<s.size(); i++)
+    {
+        c[s[i]-'a']++;
+    }
+    char ans = 'a'; int max=0;
+    for(int i=0; i<26; i++)
+    {
+        if(c[i]>max)
+        {
+            max=c[i];
+            ans = i+'a';
+        }
+    }
+    cout<<"The character "<<ans<<" appears "<<max<<" times"<<endl;
+}
